@@ -1,6 +1,6 @@
 #!/bin/bash
 push_flag='false'
-registry=''     # e.g. 'descartesresearch/'
+registry='descartesresearch/'     # e.g. 'descartesresearch/'
 
 print_usage() {
   printf "Usage: docker_build.sh [-p] [-r REGISTRY_NAME]\n"
