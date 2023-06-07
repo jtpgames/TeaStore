@@ -27,6 +27,8 @@ docker build -t "${registry}teastore-auth" ../services/tools.descartes.teastore.
 docker build -t "${registry}teastore-recommender" ../services/tools.descartes.teastore.recommender/
 perl -i -pe's|.*FROM '"${registry}"'|FROM descartesresearch/|g' ../services/tools.descartes.teastore.*/Dockerfile
 
+push_flag='false' # always false, because we use descartesresearch as the registry and do not want to overwrite anything from other people :)
+
 if [ "$push_flag" = 'true' ]; then
   docker push "${registry}teastore-db"
   docker push "${registry}teastore-kieker-rabbitmq"
