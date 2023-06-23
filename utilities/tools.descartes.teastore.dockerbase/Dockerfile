@@ -1,6 +1,14 @@
 FROM tomcat:10.0.7-jdk11
 MAINTAINER Chair of Software Engineering <se2-it@informatik.uni-wuerzburg.de>
 
+# install needed packages for containernet, see https://github.com/containernet/containernet/wiki/Tutorial:-Getting-Started#custom-image
+RUN apt-get update && apt-get install -y \
+    net-tools \
+    iputils-ping \
+    iproute2 \
+    telnet telnetd \
+    iperf
+
 RUN rm /usr/local/tomcat/lib/websocket-api.jar
 RUN rm /usr/local/tomcat/lib/tomcat-websocket.jar
 

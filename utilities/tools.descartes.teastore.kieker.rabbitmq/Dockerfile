@@ -1,6 +1,14 @@
 FROM rabbitmq:management
 MAINTAINER Chair of Software Engineering <se2-it@informatik.uni-wuerzburg.de>
 
+# install needed packages for containernet, see https://github.com/containernet/containernet/wiki/Tutorial:-Getting-Started#custom-image
+RUN apt-get update && apt-get install -y \
+    net-tools \
+    iputils-ping \
+    iproute2 \
+    telnet telnetd \
+    iperf
+
 COPY apache-tomcat-8.5.24.zip /apache.zip
 COPY rabbitmq.config /etc/rabbitmq/
 COPY custom_definitions.json /etc/rabbitmq/
