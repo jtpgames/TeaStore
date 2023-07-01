@@ -1,6 +1,14 @@
 FROM mariadb:10.4.12
 MAINTAINER Chair of Software Engineering <se2-it@informatik.uni-wuerzburg.de>
 
+# install needed packages for containernet, see https://github.com/containernet/containernet/wiki/Tutorial:-Getting-Started#custom-image
+RUN apt-get update && apt-get install -y \
+    net-tools \
+    iputils-ping \
+    iproute2 \
+    telnet telnetd \
+    iperf
+
 # The setup.sql must be run before the data sql file. The container will execute the files in alphabetical order
 COPY setup.sql /docker-entrypoint-initdb.d/setup_0.sql
 # Uncomment the following line if the teadb schema should come with a standard initialized data set
