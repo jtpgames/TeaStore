@@ -24,4 +24,4 @@ COPY target/*.war /apache-tomcat-8.5.24/webapps/logs.war
 EXPOSE 8080
 
 #Login for rabbitmq webui is admin:nimda
-CMD  /apache-tomcat-8.5.24/bin/startup.sh && echo '<% response.sendRedirect("/logs/index"); %>' > /apache-tomcat-8.5.24/webapps/ROOT/index.jsp && rabbitmq-server
+CMD  rabbitmq-server start -detached && sleep 10 && /apache-tomcat-8.5.24/bin/startup.sh && echo '<% response.sendRedirect("/logs/index"); %>' > /apache-tomcat-8.5.24/webapps/ROOT/index.jsp && sleep infinity
